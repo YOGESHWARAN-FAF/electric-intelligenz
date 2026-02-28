@@ -71,7 +71,7 @@ const CircuitTraces = () => {
 // Data particles flowing (electrons)
 const ElectronFlow = () => {
     const ref = useRef();
-    const count = 500;
+    const count = 150;
 
     const [positions, colors, speeds] = useMemo(() => {
         const p = new Float32Array(count * 3);
@@ -197,7 +197,7 @@ const ElectronicComponents = () => {
 const Background = () => {
     return (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
-            <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
+            <Canvas camera={{ position: [0, 0, 15], fov: 60 }} dpr={[1, 1.5]}>
                 <color attach="background" args={['#05081c']} />
                 <fog attach="fog" args={['#05081c', 10, 40]} />
                 <ambientLight intensity={0.8} />
@@ -209,11 +209,10 @@ const Background = () => {
                 <ElectronFlow />
                 <ElectronicComponents />
 
-                <Sparkles count={150} scale={25} size={3} speed={0.5} opacity={0.6} color="#00F5FF" />
+                <Sparkles count={50} scale={25} size={3} speed={0.5} opacity={0.6} color="#00F5FF" />
 
                 <EffectComposer disableNormalPass>
-                    <Bloom luminanceThreshold={0.2} mipmapBlur intensity={2.5} radius={0.5} />
-                    <DepthOfField focusDistance={0} focalLength={0.03} bokehScale={3} height={480} />
+                    <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} radius={0.5} />
                     <ChromaticAberration offset={[0.002, 0.002]} />
                     <Vignette eskil={false} offset={0.15} darkness={1.2} />
                 </EffectComposer>

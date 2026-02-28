@@ -55,8 +55,8 @@ const Dashboard = () => {
                     zIndex: -1
                 }} />
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', borderBottom: '1px solid rgba(0, 245, 255, 0.3)', paddingBottom: '1rem' }}>
-                    <h2 className="section-title" style={{ margin: 0, fontSize: '2rem', textAlign: 'left' }}>Event Dashboard</h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(0, 245, 255, 0.3)', paddingBottom: '1rem' }}>
+                    <h2 className="section-title" style={{ margin: 0, fontSize: 'clamp(1.5rem, 4vw, 2rem)', textAlign: 'left' }}>Event Dashboard</h2>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', background: 'rgba(0,255,0,0.1)', padding: '0.5rem 1.5rem', borderRadius: '30px', border: '1px solid rgba(0,255,0,0.5)' }}>
                         <div className="status-dot" style={{ width: '12px', height: '12px', background: '#0f0', borderRadius: '50%', boxShadow: '0 0 10px #0f0' }}></div>
@@ -64,7 +64,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
                     <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2.5', fontSize: '1.1rem' }}>
                         <li><strong className="text-cyan">Event Name:</strong> Electric Intelligenz 2K26</li>
                         <li><strong className="text-cyan">Department:</strong> Electrical and Electronics Eng.</li>
@@ -78,20 +78,20 @@ const Dashboard = () => {
                 </div>
 
                 {/* Contact Email Highlight */}
-                <div style={{ background: 'rgba(0, 245, 255, 0.05)', border: '1px solid rgba(0, 245, 255, 0.3)', padding: '1rem', borderRadius: '8px', marginBottom: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ background: 'rgba(0, 245, 255, 0.05)', border: '1px solid rgba(0, 245, 255, 0.3)', padding: '1rem', borderRadius: '8px', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ color: 'var(--text-white)' }}>Contact Us:</span>
-                    <a href="mailto:electricintelligenzmec@gmail.com" style={{ color: 'var(--glow-cyan)', fontSize: '1.2rem', fontWeight: 'bold', textDecoration: 'none', textShadow: '0 0 10px rgba(0,245,255,0.5)' }}>
+                    <a href="mailto:electricintelligenzmec@gmail.com" style={{ color: 'var(--glow-cyan)', fontSize: 'clamp(0.9rem, 3vw, 1.2rem)', fontWeight: 'bold', textDecoration: 'none', textShadow: '0 0 10px rgba(0,245,255,0.5)', wordBreak: 'break-all' }}>
                         electricintelligenzmec@gmail.com
                     </a>
                 </div>
 
-                <div style={{ background: 'rgba(255, 216, 77, 0.05)', border: '1px solid rgba(255, 216, 77, 0.3)', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', display: 'flex', justifyContent: 'space-around' }}>
-                    <div style={{ textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255, 216, 77, 0.05)', border: '1px solid rgba(255, 216, 77, 0.3)', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'space-around' }}>
+                    <div style={{ textAlign: 'center', flex: '1 1 min-content' }}>
                         <span style={{ display: 'block', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>Early Bird</span>
                         <strong className="text-yellow" style={{ fontSize: '1.5rem' }}>₹250</strong>
                     </div>
                     <div style={{ width: '1px', background: 'rgba(255, 216, 77, 0.3)' }}></div>
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ textAlign: 'center', flex: '1 1 min-content' }}>
                         <span style={{ display: 'block', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', marginBottom: '0.5rem' }}>Spot Registration</span>
                         <strong className="text-yellow" style={{ fontSize: '1.5rem' }}>₹300</strong>
                     </div>

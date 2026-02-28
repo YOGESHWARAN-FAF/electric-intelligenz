@@ -134,8 +134,8 @@ const Hero = () => {
             padding: '2rem'
         }}>
 
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '400px', height: '400px', zIndex: -1, opacity: 0.8 }}>
-                <Canvas camera={{ position: [0, 0, 5] }}>
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', maxWidth: '400px', maxHeight: '400px', zIndex: -1, opacity: 0.8 }}>
+                <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1.5]}>
                     <CyberCore />
                 </Canvas>
             </div>
@@ -196,11 +196,15 @@ const Hero = () => {
             <div className="countdown glass-panel mono" style={{
                 display: 'flex',
                 gap: '2rem',
-                padding: '1.5rem 3rem',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                padding: '1.5rem',
                 marginTop: '3rem',
                 border: '1px solid var(--glow-cyan)',
                 boxShadow: '0 0 20px rgba(0, 245, 255, 0.2) inset',
-                zIndex: 2
+                zIndex: 2,
+                width: '100%',
+                maxWidth: '600px'
             }}>
                 {[
                     { label: 'DAYS', value: timeLeft.days },
