@@ -1,0 +1,68 @@
+import React from 'react';
+
+const OrganizingCommittee = () => {
+    return (
+        <section style={{ padding: '4rem 2rem', display: 'flex', justifyContent: 'center' }}>
+            <div className="glass-panel" style={{
+                width: '100%',
+                maxWidth: '900px',
+                padding: '3rem',
+                border: '1px solid rgba(0, 245, 255, 0.3)',
+            }}>
+                <h3 className="section-title" style={{ fontSize: '2rem', marginBottom: '2.5rem', textAlign: 'center', color: 'var(--glow-cyan)' }}>Organizing Committee</h3>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+
+                    {/* 3rd Year Coordinators */}
+                    <div style={{ background: 'rgba(11, 15, 43, 0.6)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(255, 216, 77, 0.2)' }}>
+                        <h4 className="text-yellow" style={{ marginBottom: '1rem', borderBottom: '1px solid rgba(255, 216, 77, 0.3)', paddingBottom: '0.5rem' }}>3rd Year Coordinators</h4>
+                        <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2' }}>
+                            <li style={{ display: 'flex', flexDirection: 'column', marginBottom: '0.8rem' }}>
+                                <span style={{ fontWeight: 'bold' }}>1. DJ JENITHDIWAKAR</span>
+                                <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }}><span style={{ color: 'var(--glow-cyan)' }}>✆</span> 98945 22867</span>
+                            </li>
+                            <li style={{ display: 'flex', flexDirection: 'column' }}>
+                                <span style={{ fontWeight: 'bold' }}>2. S PRASANTH</span>
+                                <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }}><span style={{ color: 'var(--glow-cyan)' }}>✆</span> 72006 08333</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* 2nd Year Coordinators */}
+                    <div style={{ background: 'rgba(11, 15, 43, 0.6)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(0, 245, 255, 0.2)' }}>
+                        <h4 className="text-cyan" style={{ marginBottom: '1rem', borderBottom: '1px solid rgba(0, 245, 255, 0.3)', paddingBottom: '0.5rem' }}>2nd Year Coordinators</h4>
+                        <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2' }}>
+                            <li style={{ fontWeight: 'bold', marginBottom: '0.8rem' }}>1. MR DHILIPAN</li>
+                            <li style={{ fontWeight: 'bold' }}>2. B KAVIN</li>
+                        </ul>
+                    </div>
+
+                    {/* Google Student Ambassadors */}
+                    <div style={{
+                        background: 'linear-gradient(135deg, rgba(29, 39, 90, 0.8), rgba(11, 15, 43, 0.8))',
+                        padding: '1.5rem',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(66, 133, 244, 0.5)',
+                        gridColumn: '1 / -1', // Span full width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        boxShadow: '0 0 20px rgba(0, 0, 0, 0.5) inset'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', borderBottom: '1px solid rgba(66, 133, 244, 0.3)', paddingBottom: '0.5rem', width: '100%', justifyContent: 'center' }}>
+                            <img src="/src/assets/gemini-logo.png" alt="Google Gemini Logo" style={{ width: '40px', height: 'auto', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' }} />
+                            <h4 className="text-google" style={{ fontSize: '1.5rem', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))', textAlign: 'center' }}>Google Gemini Student Ambassadors</h4>
+                        </div>
+                        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>1. S KANNAN ARUMUGAM</div>
+                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>2. M YOGESHWARAN</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default OrganizingCommittee;
