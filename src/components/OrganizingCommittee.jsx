@@ -1,4 +1,5 @@
 import React from 'react';
+import geminiLogo from '../assets/gemini-logo.png';
 
 const OrganizingCommittee = () => {
     return (
@@ -13,6 +14,7 @@ const OrganizingCommittee = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 100%, 300px), 1fr))', gap: 'clamp(1.5rem, 4vw, 2rem)' }}>
 
+                    {/* ... (Coordinators) ... */}
                     {/* 3rd Year Coordinators */}
                     <div style={{ background: 'rgba(11, 15, 43, 0.6)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(255, 216, 77, 0.2)' }}>
                         <h4 className="text-yellow" style={{ marginBottom: '1rem', borderBottom: '1px solid rgba(255, 216, 77, 0.3)', paddingBottom: '0.5rem' }}>3rd Year Coordinators</h4>
@@ -50,7 +52,7 @@ const OrganizingCommittee = () => {
                         boxShadow: '0 0 20px rgba(0, 0, 0, 0.5) inset'
                     }}>
                         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)', marginBottom: '1rem', borderBottom: '1px solid rgba(66, 133, 244, 0.3)', paddingBottom: '0.5rem', width: '100%', justifyContent: 'center' }}>
-                            <img src="/src/assets/gemini-logo.png" alt="Google Gemini Logo" style={{ width: '40px', height: 'auto', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' }} />
+                            <img src={geminiLogo} alt="Google Gemini Logo" style={{ width: '40px', height: 'auto', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' }} />
                             <h4 className="text-google" style={{ fontSize: 'clamp(1.2rem, 5vw, 1.5rem)', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))', textAlign: 'center' }}>Google Gemini Student Ambassadors</h4>
                         </div>
                         <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 2rem)', flexWrap: 'wrap', justifyContent: 'center' }}>

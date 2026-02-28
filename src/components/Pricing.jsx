@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import qrImage from '../assets/qr.png';
 
 const Pricing = () => {
     const scannerRef = useRef(null);
@@ -111,7 +112,7 @@ const Pricing = () => {
                     }}></div>
 
                     <img
-                        src="/src/assets/qr.png"
+                        src={qrImage}
                         alt="Registration QR Code"
                         style={{
                             width: 'clamp(120px, 40vw, 180px)',
