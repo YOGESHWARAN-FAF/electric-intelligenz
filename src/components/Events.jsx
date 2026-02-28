@@ -38,7 +38,7 @@ const EventCard = ({ title, items, icon: Icon, color }) => {
             className="glass-panel"
             style={{
                 ...style,
-                padding: '3rem 2rem',
+                padding: 'clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem)',
                 border: `1px solid ${color}`,
                 boxShadow: `0 0 20px ${color}33`, // 33 is ~20% opacity hex
                 display: 'flex',
@@ -89,10 +89,10 @@ const EventCard = ({ title, items, icon: Icon, color }) => {
 
 const Events = () => {
     return (
-        <section style={{ padding: '6rem 2vw', maxWidth: '1400px', margin: '0 auto' }}>
-            <h2 className="section-title text-cyan" style={{ fontSize: '3rem', textShadow: '0 0 20px rgba(0, 245, 255, 0.5)' }}>EXPLORE EVENTS</h2>
+        <section style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem)', maxWidth: '1400px', margin: '0 auto' }}>
+            <h2 className="section-title text-cyan" style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', textShadow: '0 0 20px rgba(0, 245, 255, 0.5)' }}>EXPLORE EVENTS</h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', padding: '2rem 0' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 100%, 300px), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', padding: 'clamp(1rem, 4vw, 2rem) 0' }}>
                 <EventCard
                     title="Technical Events"
                     icon={Cpu}

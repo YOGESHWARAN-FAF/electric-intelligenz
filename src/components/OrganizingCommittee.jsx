@@ -2,16 +2,16 @@ import React from 'react';
 
 const OrganizingCommittee = () => {
     return (
-        <section style={{ padding: '4rem 2rem', display: 'flex', justifyContent: 'center' }}>
+        <section style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem)', display: 'flex', justifyContent: 'center' }}>
             <div className="glass-panel" style={{
                 width: '100%',
                 maxWidth: '900px',
-                padding: '3rem',
+                padding: 'clamp(1.5rem, 5vw, 3rem)',
                 border: '1px solid rgba(0, 245, 255, 0.3)',
             }}>
-                <h3 className="section-title" style={{ fontSize: '2rem', marginBottom: '2.5rem', textAlign: 'center', color: 'var(--glow-cyan)' }}>Organizing Committee</h3>
+                <h3 className="section-title" style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', marginBottom: 'clamp(1.5rem, 4vw, 2.5rem)', textAlign: 'center', color: 'var(--glow-cyan)' }}>Organizing Committee</h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 100%, 300px), 1fr))', gap: 'clamp(1.5rem, 4vw, 2rem)' }}>
 
                     {/* 3rd Year Coordinators */}
                     <div style={{ background: 'rgba(11, 15, 43, 0.6)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(255, 216, 77, 0.2)' }}>
@@ -40,7 +40,7 @@ const OrganizingCommittee = () => {
                     {/* Google Student Ambassadors */}
                     <div style={{
                         background: 'linear-gradient(135deg, rgba(29, 39, 90, 0.8), rgba(11, 15, 43, 0.8))',
-                        padding: '1.5rem',
+                        padding: 'clamp(1.2rem, 4vw, 1.5rem)',
                         borderRadius: '8px',
                         border: '1px solid rgba(66, 133, 244, 0.5)',
                         gridColumn: '1 / -1', // Span full width
@@ -49,13 +49,13 @@ const OrganizingCommittee = () => {
                         alignItems: 'center',
                         boxShadow: '0 0 20px rgba(0, 0, 0, 0.5) inset'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', borderBottom: '1px solid rgba(66, 133, 244, 0.3)', paddingBottom: '0.5rem', width: '100%', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)', marginBottom: '1rem', borderBottom: '1px solid rgba(66, 133, 244, 0.3)', paddingBottom: '0.5rem', width: '100%', justifyContent: 'center' }}>
                             <img src="/src/assets/gemini-logo.png" alt="Google Gemini Logo" style={{ width: '40px', height: 'auto', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' }} />
-                            <h4 className="text-google" style={{ fontSize: '1.5rem', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))', textAlign: 'center' }}>Google Gemini Student Ambassadors</h4>
+                            <h4 className="text-google" style={{ fontSize: 'clamp(1.2rem, 5vw, 1.5rem)', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))', textAlign: 'center' }}>Google Gemini Student Ambassadors</h4>
                         </div>
-                        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>1. S KANNAN ARUMUGAM</div>
-                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>2. M YOGESHWARAN</div>
+                        <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 2rem)', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center', flex: '1 1 min-content' }}>1. S KANNAN ARUMUGAM</div>
+                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center', flex: '1 1 min-content' }}>2. M YOGESHWARAN</div>
                         </div>
                     </div>
 
