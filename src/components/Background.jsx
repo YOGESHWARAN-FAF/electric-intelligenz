@@ -1,7 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Environment, Float, Sparkles, Line, Instances, Instance } from '@react-three/drei';
-import { EffectComposer, Bloom, Vignette, DepthOfField, ChromaticAberration } from '@react-three/postprocessing';
 import * as THREE from 'three';
 
 // Procedurally generated circuit traces
@@ -210,11 +209,6 @@ const Background = () => {
                 <ElectronicComponents />
 
                 <Sparkles count={25} scale={25} size={3} speed={0.5} opacity={0.6} color="#00F5FF" />
-
-                <EffectComposer disableNormalPass multisampling={0}>
-                    <Bloom luminanceThreshold={0.4} mipmapBlur intensity={1.5} radius={0.5} />
-                    <Vignette eskil={false} offset={0.15} darkness={1.2} />
-                </EffectComposer>
             </Canvas>
         </div>
     );

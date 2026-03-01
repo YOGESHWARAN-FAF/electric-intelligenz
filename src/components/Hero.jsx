@@ -179,6 +179,7 @@ const Hero = () => {
                     src={collabBannerImg}
                     alt="Google Gemini x Electric Intelligenz Collab"
                     style={{
+                        marginLeft: '-0.8rem', // Pulled left to sit closer to the text
                         width: '100%',
                         maxWidth: 'clamp(110px, 20vw, 180px)', // Shrinks dynamically on mobile
                         height: 'auto',

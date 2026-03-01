@@ -60,9 +60,11 @@ canvas {
 
 /* Glassmorphism with Cybertech Edge */
 .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(11, 15, 43, 0.75);
+    /* Increased opacity to compensate for less blur */
+    backdrop-filter: blur(4px);
+    /* Heavily reduced from 12px for scroll performance */
+    -webkit-backdrop-filter: blur(4px);
     border: 1px solid var(--glass-border);
     box-shadow: 0 0 30px rgba(0, 245, 255, 0.15), inset 0 0 20px rgba(0, 245, 255, 0.05);
     border-radius: 12px;
@@ -202,7 +204,7 @@ canvas {
             rgba(0, 0, 0, 0.1) 50%,
             rgba(0, 0, 0, 0.1));
     background-size: 100% 4px;
-    animation: scanlines 10s linear infinite;
+    /* disabled animation: scanlines 10s linear infinite to save massive GPU repaints on scroll */
 }
 
 @keyframes scanlines {
