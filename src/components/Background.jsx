@@ -8,7 +8,7 @@ import * as THREE from 'three';
 const CircuitTraces = () => {
     const lines = useMemo(() => {
         const generatedLines = [];
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 15; i++) {
             const startX = (Math.random() - 0.5) * 40;
             const startZ = (Math.random() - 0.5) * 40;
             const length1 = Math.random() * 5 + 2;
@@ -71,7 +71,7 @@ const CircuitTraces = () => {
 // Data particles flowing (electrons)
 const ElectronFlow = () => {
     const ref = useRef();
-    const count = 150;
+    const count = 75; // reduced for perf
 
     const [positions, colors, speeds] = useMemo(() => {
         const p = new Float32Array(count * 3);
@@ -197,7 +197,7 @@ const ElectronicComponents = () => {
 const Background = () => {
     return (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}>
-            <Canvas camera={{ position: [0, 0, 15], fov: 60 }} dpr={[1, 1.5]}>
+            <Canvas camera={{ position: [0, 0, 15], fov: 60 }} dpr={[1, 1]} performance={{ min: 0.5 }}>
                 <color attach="background" args={['#05081c']} />
                 <fog attach="fog" args={['#05081c', 10, 40]} />
                 <ambientLight intensity={0.8} />
@@ -209,11 +209,10 @@ const Background = () => {
                 <ElectronFlow />
                 <ElectronicComponents />
 
-                <Sparkles count={50} scale={25} size={3} speed={0.5} opacity={0.6} color="#00F5FF" />
+                <Sparkles count={25} scale={25} size={3} speed={0.5} opacity={0.6} color="#00F5FF" />
 
-                <EffectComposer disableNormalPass>
-                    <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} radius={0.5} />
-                    <ChromaticAberration offset={[0.002, 0.002]} />
+                <EffectComposer disableNormalPass multisampling={0}>
+                    <Bloom luminanceThreshold={0.4} mipmapBlur intensity={1.5} radius={0.5} />
                     <Vignette eskil={false} offset={0.15} darkness={1.2} />
                 </EffectComposer>
             </Canvas>

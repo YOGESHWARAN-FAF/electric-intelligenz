@@ -4,11 +4,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Hero from './components/Hero';
 import Dashboard from './components/Dashboard';
+import ChiefGuest from './components/ChiefGuest';
 import Events from './components/Events';
 import Pricing from './components/Pricing';
+import PrizePool from './components/PrizePool';
 import Background from './components/Background';
 import CursorTrail from './components/CursorTrail';
 import OrganizingCommittee from './components/OrganizingCommittee';
+import InstagramFollow from './components/InstagramFollow';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,10 +52,13 @@ function App() {
 
             <main ref={containerRef} className="app-container">
                 <Hero />
+                <ChiefGuest />
                 <Dashboard />
                 <Events />
+                <PrizePool />
                 <Pricing />
                 <OrganizingCommittee />
+                <InstagramFollow />
 
                 <footer style={{
                     textAlign: 'center',

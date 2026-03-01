@@ -18,64 +18,68 @@ const RealisticLightning = () => {
 
         let lightningBolts = [];
 
-        // Generates a jagged path between a start and an end
-        const createBolt = (startX, startY, endX, endY, thickness, branchProb) => {
+        // Generates a jagged path
+        const createBolt = (startX, startY, endX, endY, maxBranches, branchProb) => {
             const path = [{ x: startX, y: startY }];
             let currX = startX;
             let currY = startY;
 
             while (currY < endY) {
-                // Move mostly down, randomly left/right
-                currX += (Math.random() - 0.5) * 60;
-                currY += Math.random() * 40 + 10;
+                // sharper, more erratic lateral movements (more realistic thunder)
+                currX += (Math.random() - 0.5) * 80;
+                currY += Math.random() * 25 + 5; // shorter drops make it look more jagged
 
                 path.push({ x: currX, y: currY });
 
-                // Create a sub-branch
-                if (Math.random() < branchProb) {
-                    const bEndX = currX + (Math.random() - 0.5) * 200;
-                    const bEndY = currY + Math.random() * 200 + 50;
+                // Create aggressive sub-branches
+                if (maxBranches > 0 && Math.random() < branchProb) {
+                    const bEndX = currX + (Math.random() - 0.5) * 300;
+                    const bEndY = currY + Math.random() * 300 + 100;
                     lightningBolts.push({
                         path: createPath(currX, currY, bEndX, bEndY),
-                        thickness: thickness * 0.6,
+                        thickness: Math.random() * 1.5 + 0.5,
                         alpha: 1,
                         flashIntensity: 0
                     });
+                    maxBranches--;
                 }
             }
             return path;
         };
 
+        // Helper path generator for branches
         const createPath = (sx, sy, ex, ey) => {
             const p = [{ x: sx, y: sy }];
             let cx = sx; let cy = sy;
             while (cy < ey) {
-                cx += (Math.random() - 0.5) * 40;
-                cy += Math.random() * 30 + 10;
+                cx += (Math.random() - 0.5) * 60;
+                cy += Math.random() * 20 + 5;
                 p.push({ x: cx, y: cy });
             }
             return p;
         }
 
         const triggerThunder = () => {
-            lightningBolts = [];
-            const startX = Math.random() * canvas.width;
+            // Occasionally create multiple simultaneous strikes for realism
+            const strikes = Math.random() > 0.8 ? 2 : 1;
 
-            // Main bolt
-            lightningBolts.push({
-                path: createBolt(startX, 0, startX + (Math.random() - 0.5) * 300, canvas.height, 4, 0.2),
-                thickness: 4,
-                alpha: 1,
-                flashIntensity: 1 // screen flash
-            });
+            for (let k = 0; k < strikes; k++) {
+                const startX = Math.random() * canvas.width;
+                lightningBolts.push({
+                    path: createBolt(startX, 0, startX + (Math.random() - 0.5) * 400, canvas.height, 6, 0.4),
+                    thickness: Math.random() * 2 + 2,
+                    alpha: 1.2, // Over-alpha for harder initial strike
+                    flashIntensity: 0.8 // Screen flash
+                });
+            }
         };
 
         // Render loop
         const drawLoop = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear screen completely
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Randomly trigger a thunder strike
-            if (Math.random() < 0.005) { // 0.5% chance per frame (every few seconds roughly)
+            // Trigger a thunder strike
+            if (Math.random() < 0.003) {
                 triggerThunder();
             }
 
@@ -97,30 +101,30 @@ const RealisticLightning = () => {
                     ctx.lineTo(bolt.path[j].x, bolt.path[j].y);
                 }
 
-                // Outer cyan glow
-                ctx.shadowBlur = 30;
+                // Aggressive, tight outer cyan glow
+                ctx.shadowBlur = 15;
                 ctx.shadowColor = '#00F5FF';
-                ctx.strokeStyle = `rgba(100, 245, 255, ${bolt.alpha})`;
-                ctx.lineWidth = bolt.thickness + 4;
+                ctx.strokeStyle = `rgba(0, 245, 255, ${bolt.alpha})`;
+                ctx.lineWidth = bolt.thickness + 2;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'miter';
                 ctx.stroke();
 
-                // Inner bright white core
-                ctx.shadowBlur = 10;
+                // Blinding Inner bright white core
+                ctx.shadowBlur = 5;
                 ctx.shadowColor = '#FFFFFF';
-                ctx.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha})`;
-                ctx.lineWidth = bolt.thickness;
+                ctx.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha * 1.5})`; // Core stays brighter longer
+                ctx.lineWidth = bolt.thickness * 0.5;
                 ctx.stroke();
 
-                // Fade out lightning
-                bolt.alpha -= 0.05; // Fade over ~20 frames
-                bolt.flashIntensity -= 0.1;
+                // Non-linear fade out (lightning flashes fast, lingers slightly)
+                bolt.alpha -= 0.08;
+                bolt.flashIntensity -= 0.15;
             }
 
-            // Draw full screen flash if intense
+            // Draw full screen flash if intense, capped so it doesn't wash out completely
             if (maxFlash > 0) {
-                ctx.fillStyle = `rgba(255, 255, 255, ${maxFlash * 0.3})`;
+                ctx.fillStyle = `rgba(200, 245, 255, ${Math.min(maxFlash * 0.15, 0.4)})`;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
             }
 

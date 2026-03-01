@@ -80,7 +80,7 @@ const Dashboard = () => {
                 {/* Contact Email Highlight */}
                 <div style={{ background: 'rgba(0, 245, 255, 0.05)', border: '1px solid rgba(0, 245, 255, 0.3)', padding: 'clamp(0.8rem, 2vw, 1rem)', borderRadius: '8px', marginBottom: 'clamp(1.5rem, 3vw, 2rem)', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ color: 'var(--text-white)' }}>Contact Us:</span>
-                    <a href="mailto:electricintelligenzmec@gmail.com" style={{ color: 'var(--glow-cyan)', fontSize: 'clamp(0.8rem, 4vw, 1.2rem)', fontWeight: 'bold', textDecoration: 'none', textShadow: '0 0 10px rgba(0,245,255,0.5)', wordBreak: 'break-all', textAlign: 'center' }}>
+                    <a href="mailto:electricintelligenzmec@gmail.com" style={{ color: 'var(--glow-cyan)', fontSize: 'clamp(0.8rem, 4vw, 1.2rem)', fontWeight: 'bold', textDecoration: 'none', textShadow: '0 0 10px rgba(0,245,255,0.5)', wordBreak: 'break-word', overflowWrap: 'anywhere', textAlign: 'center' }}>
                         electricintelligenzmec@gmail.com
                     </a>
                 </div>

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 const CursorTrail = () => {
     const canvasRef = useRef(null);
-    const [mouse, setMouse] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    const mouseTarget = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -19,16 +19,16 @@ const CursorTrail = () => {
         });
 
         window.addEventListener('mousemove', (event) => {
-            setMouse({ x: event.x, y: event.y });
-            for (let i = 0; i < 5; i++) {
+            mouseTarget.current = { x: event.clientX, y: event.clientY };
+            for (let i = 0; i < 3; i++) { // reduced particles count per event for better perf
                 particlesArray.push(new Particle());
             }
         });
 
         class Particle {
             constructor() {
-                this.x = mouse.x;
-                this.y = mouse.y;
+                this.x = mouseTarget.current.x;
+                this.y = mouseTarget.current.y;
                 this.size = Math.random() * 3 + 1;
                 this.speedX = Math.random() * 3 - 1.5;
                 this.speedY = Math.random() * 3 - 1.5;
@@ -73,7 +73,7 @@ const CursorTrail = () => {
             window.removeEventListener('resize', () => { });
             window.removeEventListener('mousemove', () => { });
         };
-    }, [mouse]);
+    }, []);
 
     return (
         <canvas

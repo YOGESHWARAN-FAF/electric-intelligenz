@@ -1,5 +1,4 @@
 import React from 'react';
-import geminiLogo from '../assets/gemini-logo.png';
 
 const OrganizingCommittee = () => {
     return (
@@ -37,28 +36,6 @@ const OrganizingCommittee = () => {
                             <li style={{ fontWeight: 'bold', marginBottom: '0.8rem' }}>1. MR DHILIPAN</li>
                             <li style={{ fontWeight: 'bold' }}>2. B KAVIN</li>
                         </ul>
-                    </div>
-
-                    {/* Google Student Ambassadors */}
-                    <div style={{
-                        background: 'linear-gradient(135deg, rgba(29, 39, 90, 0.8), rgba(11, 15, 43, 0.8))',
-                        padding: 'clamp(1.2rem, 4vw, 1.5rem)',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(66, 133, 244, 0.5)',
-                        gridColumn: '1 / -1', // Span full width
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        boxShadow: '0 0 20px rgba(0, 0, 0, 0.5) inset'
-                    }}>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'clamp(0.5rem, 2vw, 1rem)', marginBottom: '1rem', borderBottom: '1px solid rgba(66, 133, 244, 0.3)', paddingBottom: '0.5rem', width: '100%', justifyContent: 'center' }}>
-                            <img src={geminiLogo} alt="Google Gemini Logo" style={{ width: '40px', height: 'auto', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.5))' }} />
-                            <h4 className="text-google" style={{ fontSize: 'clamp(1.2rem, 5vw, 1.5rem)', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))', textAlign: 'center' }}>Google Gemini Student Ambassadors</h4>
-                        </div>
-                        <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 2rem)', flexWrap: 'wrap', justifyContent: 'center' }}>
-                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center', flex: '1 1 min-content' }}>1. S KANNAN ARUMUGAM</div>
-                            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center', flex: '1 1 min-content' }}>2. M YOGESHWARAN</div>
-                        </div>
                     </div>
 
                 </div>

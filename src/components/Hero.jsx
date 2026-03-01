@@ -4,6 +4,7 @@ import { Torus, Octahedron, Sphere, Icosahedron } from '@react-three/drei';
 import gsap from 'gsap';
 import * as THREE from 'three';
 import RealisticLightning from './RealisticLightning';
+import collabBannerImg from '../assets/collab-banner.png';
 
 const CyberCore = () => {
     const coreRef = useRef();
@@ -116,6 +117,16 @@ const Hero = () => {
             repeatDelay: 4
         });
 
+        // Floating glowing animation for Collab logo
+        gsap.to('.collab-img-float', {
+            y: -10,
+            filter: 'drop-shadow(0 0 25px rgba(66, 133, 244, 1)) drop-shadow(0 0 15px rgba(255, 216, 77, 1))',
+            repeat: -1,
+            yoyo: true,
+            duration: 2,
+            ease: "power1.inOut"
+        });
+
         return () => {
             clearInterval(timerId);
         };
@@ -131,11 +142,53 @@ const Hero = () => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            padding: '2rem'
+            padding: '2rem',
+            paddingTop: '6rem'
         }}>
 
+            {/* Floating Top Collab Image */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                padding: '1.5rem',
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '1rem',
+                zIndex: 10,
+                pointerEvents: 'none' // Ensures users can still click whatever is underneath if needed
+            }}>
+                <span style={{
+                    fontFamily: 'Orbitron, sans-serif',
+                    fontSize: 'clamp(0.6rem, 2vw, 0.9rem)',
+                    letterSpacing: '2px',
+                    color: 'var(--text-white)',
+                    textAlign: 'center',
+                    textTransform: 'uppercase',
+                    fontWeight: 900,
+                    textShadow: '0 0 10px rgba(66, 133, 244, 0.8), 0 0 20px rgba(0, 245, 255, 0.5)'
+                }}>
+                    Proudly Conducted In Collaboration With
+                </span>
+                <img
+                    className="collab-img-float"
+                    src={collabBannerImg}
+                    alt="Google Gemini x Electric Intelligenz Collab"
+                    style={{
+                        width: '100%',
+                        maxWidth: '180px',
+                        height: 'auto',
+                        filter: 'drop-shadow(0 0 15px rgba(66, 133, 244, 1)) drop-shadow(0 0 10px rgba(255, 216, 77, 0.8))'
+                    }}
+                />
+            </div>
+
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', maxWidth: '400px', maxHeight: '400px', zIndex: -1, opacity: 0.8 }}>
-                <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1.5]}>
+                <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1]}>
                     <CyberCore />
                 </Canvas>
             </div>
