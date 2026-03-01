@@ -143,7 +143,7 @@ const Hero = () => {
             justifyContent: 'center',
             position: 'relative',
             padding: '2rem',
-            paddingTop: '6rem'
+            paddingTop: 'clamp(6rem, 15vh, 8rem)' // Dynamic top padding gives more room on mobile
         }}>
 
             {/* Floating Top Collab Image */}
@@ -152,20 +152,20 @@ const Hero = () => {
                 top: 0,
                 left: 0,
                 width: '100%',
-                padding: '1.5rem',
+                padding: '1rem 0.5rem',
                 display: 'flex',
                 flexDirection: 'row',
-                flexWrap: 'wrap',
+                flexWrap: 'nowrap', // Prevent stacking on tiny screens
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: '1rem',
+                gap: 'clamp(0.5rem, 2vw, 1rem)',
                 zIndex: 10,
-                pointerEvents: 'none' // Ensures users can still click whatever is underneath if needed
+                pointerEvents: 'none'
             }}>
                 <span style={{
                     fontFamily: 'Orbitron, sans-serif',
-                    fontSize: 'clamp(0.6rem, 2vw, 0.9rem)',
-                    letterSpacing: '2px',
+                    fontSize: 'clamp(0.45rem, 2.2vw, 0.9rem)', // Much smaller bounds for mobile
+                    letterSpacing: 'clamp(1px, 1vw, 2px)',
                     color: 'var(--text-white)',
                     textAlign: 'center',
                     textTransform: 'uppercase',
@@ -180,7 +180,7 @@ const Hero = () => {
                     alt="Google Gemini x Electric Intelligenz Collab"
                     style={{
                         width: '100%',
-                        maxWidth: '180px',
+                        maxWidth: 'clamp(110px, 20vw, 180px)', // Shrinks dynamically on mobile
                         height: 'auto',
                         filter: 'drop-shadow(0 0 15px rgba(66, 133, 244, 1)) drop-shadow(0 0 10px rgba(255, 216, 77, 0.8))'
                     }}

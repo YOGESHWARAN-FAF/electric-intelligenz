@@ -8,10 +8,13 @@ const RealisticLightning = () => {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
 
+        let isMobile = window.innerWidth < 768;
+
         // Resize canvas to full screen
         const resize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            isMobile = window.innerWidth < 768; // Update flag on layout shift
         };
         window.addEventListener('resize', resize);
         resize();
@@ -60,16 +63,17 @@ const RealisticLightning = () => {
         }
 
         const triggerThunder = () => {
-            // Occasionally create multiple simultaneous strikes for realism
-            const strikes = Math.random() > 0.8 ? 2 : 1;
+            // Mobile devices struggle to render multiple strikes and branches, so limit them
+            const strikes = isMobile ? 1 : (Math.random() > 0.8 ? 2 : 1);
 
             for (let k = 0; k < strikes; k++) {
                 const startX = Math.random() * canvas.width;
                 lightningBolts.push({
-                    path: createBolt(startX, 0, startX + (Math.random() - 0.5) * 400, canvas.height, 6, 0.4),
-                    thickness: Math.random() * 2 + 2,
-                    alpha: 1.2, // Over-alpha for harder initial strike
-                    flashIntensity: 0.8 // Screen flash
+                    // Drastically reduce branching (maxBranches) on mobile to save CPU
+                    path: createBolt(startX, 0, startX + (Math.random() - 0.5) * 400, canvas.height, isMobile ? 1 : 4, isMobile ? 0.1 : 0.4),
+                    thickness: Math.random() * 2 + (isMobile ? 1 : 2),
+                    alpha: 1.2,
+                    flashIntensity: isMobile ? 0.3 : 0.8 // Less intense flash on mobile
                 });
             }
         };
@@ -78,8 +82,8 @@ const RealisticLightning = () => {
         const drawLoop = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Trigger a thunder strike
-            if (Math.random() < 0.003) {
+            // Strike half as often on mobile
+            if (Math.random() < (isMobile ? 0.001 : 0.003)) {
                 triggerThunder();
             }
 
@@ -101,19 +105,25 @@ const RealisticLightning = () => {
                     ctx.lineTo(bolt.path[j].x, bolt.path[j].y);
                 }
 
-                // Aggressive, tight outer cyan glow
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = '#00F5FF';
+                // CSS shadowBlur crashes mobile GPU framerates linearly, disable entirely or heavily reduce
+                if (!isMobile) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#00F5FF';
+                } else {
+                    ctx.shadowBlur = 0;
+                }
                 ctx.strokeStyle = `rgba(0, 245, 255, ${bolt.alpha})`;
-                ctx.lineWidth = bolt.thickness + 2;
+                ctx.lineWidth = bolt.thickness + (isMobile ? 1 : 2);
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'miter';
                 ctx.stroke();
 
                 // Blinding Inner bright white core
-                ctx.shadowBlur = 5;
-                ctx.shadowColor = '#FFFFFF';
-                ctx.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha * 1.5})`; // Core stays brighter longer
+                if (!isMobile) {
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = '#FFFFFF';
+                }
+                ctx.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha * 1.5})`;
                 ctx.lineWidth = bolt.thickness * 0.5;
                 ctx.stroke();
 
