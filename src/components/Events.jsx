@@ -4,6 +4,7 @@ import { Cpu, Gamepad2, Wrench } from 'lucide-react';
 const EventCard = ({ title, items, icon: Icon, color }) => {
     const cardRef = useRef(null);
     const [style, setStyle] = useState({});
+    const [expandedIdx, setExpandedIdx] = useState(null);
 
     const handleMouseMove = (e) => {
         if (!cardRef.current) return;
@@ -74,15 +75,40 @@ const EventCard = ({ title, items, icon: Icon, color }) => {
             </h3>
 
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
-                {items.map((item, idx) => (
-                    <li key={idx} style={{ padding: '0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border1pxSolid: 'rgba(255,255,255,0.1)', transition: 'all 0.3s ease' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = `${color}22`; e.currentTarget.style.transform = 'scale(1.05)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'scale(1)'; }}
-                    >
-                        {item}
-                    </li>
-                ))}
+                {items.map((item, idx) => {
+                    const isExpanded = expandedIdx === idx;
+                    return (
+                        <li key={idx} style={{ padding: '0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.3s ease' }}
+                            onMouseEnter={(e) => { e.currentTarget.style.background = `${color}22`; if (!isExpanded) e.currentTarget.style.transform = 'scale(1.05)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; if (!isExpanded) e.currentTarget.style.transform = 'scale(1)'; }}
+                            onClick={(e) => { e.stopPropagation(); setExpandedIdx(isExpanded ? null : idx); }}
+                        >
+                            <div style={{ fontWeight: isExpanded ? 'bold' : 'normal', color: isExpanded ? color : 'inherit', transition: 'color 0.3s ease' }}>
+                                {item.name || item}
+                            </div>
+                            {isExpanded && item.details && (
+                                <div style={{
+                                    marginTop: '0.8rem',
+                                    fontSize: '0.9rem',
+                                    color: 'rgba(255,255,255,0.9)',
+                                    lineHeight: '1.4',
+                                    padding: '0.5rem',
+                                    borderTop: `1px solid ${color}44`,
+                                    animation: 'fadeIn 0.3s ease'
+                                }}>
+                                    {item.details}
+                                </div>
+                            )}
+                        </li>
+                    );
+                })}
             </ul>
+            <style>{`
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(-5px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `}</style>
         </div>
     );
 };
@@ -97,19 +123,76 @@ const Events = () => {
                     title="Technical Events"
                     icon={Cpu}
                     color="#00F5FF"
-                    items={["Paper Presentation", "Project Expo", "Ideathon", "Electro Hunt"]}
+                    items={[
+                        {
+                            name: "Paper Presentation",
+                            details: (
+                                <ul style={{ textAlign: 'left', paddingLeft: '1.2rem', margin: '0.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                    <li><strong>Topic:</strong> Any Trending Technical topics</li>
+                                    <li><strong>Format:</strong> Paper should be clear and well-structured</li>
+                                    <li><strong>Team:</strong> Max 4 members per team</li>
+                                    <li><strong>Time:</strong> 7 mins presentation + 3 mins Q&A</li>
+                                    <li><strong>Rule:</strong>Participants must report and present at their 
+                                    allotted time without delay. </li>
+                                </ul>
+                            )
+                        },
+                        {
+                            name: "Project Expo",
+                            details: (
+                                <ul style={{ textAlign: 'left', paddingLeft: '1.2rem', margin: '0.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                    <li><strong>Theme:</strong> Innovation in Electrical & Electronics+IOT&AI</li>
+                                    <li><strong>Team:</strong> Max 4 members per project</li>
+                                    <li><strong>Setup:</strong> Working models only (Hardware/Software)</li>
+                                    <li><strong>Judging:</strong> Based on innovation, implementation, and presentation</li>
+                                    <li><strong>Rule:</strong> Bring required power supplies & adapters</li>
+                                </ul>
+                            )
+                        },
+                        {
+                            name: "Ideathon",
+                            details: (
+                                <ul style={{ textAlign: 'left', paddingLeft: '1.2rem', margin: '0.5rem 0', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                    <li><strong>Focus:</strong> Technical solution + Business viability</li>
+                                    <li><strong>Format:</strong> PPT presentation (Max 10 slides)</li>
+                                    <li><strong>Team:</strong> Max 4 members</li>
+                                    <li><strong>Pitch Time:</strong> 5 mins pitch + 5 mins judge feedback</li>
+                                </ul>
+                            )
+                        },
+                        {
+                            name: "Electro Hunt",
+                            details: (
+                                <div style={{ textAlign: 'left', margin: '0.5rem 0' }}>
+                                    <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>The event consists of 3 intensive rounds:</p>
+                                    <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                                        <li><strong>Round 1:</strong> Technical Quiz (MCQs on core EEE concepts)</li>
+                                        <li><strong>Round 2:</strong> Component Identification (Identify hardware components physically)</li>
+                                        <li><strong>Round 3:</strong> Circuit Connection (Build a working circuit based on a given schematic)</li>
+                                    </ul>
+                                </div>
+                            )
+                        }
+                    ]}
                 />
                 <EventCard
                     title="Non-Technical Events"
                     icon={Gamepad2}
                     color="#FFD84D"
-                    items={["Snap Sync", "Silent Skit", "Make a Story"]}
+                    items={[
+                        { name: "Snap Sync", details: "Wait for the suspense! 🤫❓😄" },
+                        { name: "Silent Skit", details: "Wait for the suspense! 🤫❓😆" },
+                        { name: "Make a Story", details: "Wait for the suspense! 🤫❓" }
+                    ]}
                 />
                 <EventCard
                     title="Workshops"
                     icon={Wrench}
                     color="#E10600"
-                    items={["LabVIEW", "MATLAB"]}
+                    items={[
+                        { name: "LabVIEW", details: "Interactive hands-on session on core LabVIEW concepts." },
+                        { name: "MATLAB", details: "Learn the fundamentals of MATLAB simulations." }
+                    ]}
                 />
             </div>
         </section>

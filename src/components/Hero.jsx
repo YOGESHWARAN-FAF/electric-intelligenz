@@ -4,7 +4,8 @@ import { Torus, Octahedron, Sphere, Icosahedron } from '@react-three/drei';
 import gsap from 'gsap';
 import * as THREE from 'three';
 import RealisticLightning from './RealisticLightning';
-import collabBannerImg from '../assets/collab-banner.png';
+import deptLogoImg from '../assets/dept-logo.png';
+import collegeLogoImg from '../assets/college-logo.png';
 
 const CyberCore = () => {
     const coreRef = useRef();
@@ -117,15 +118,6 @@ const Hero = () => {
             repeatDelay: 4
         });
 
-        // Floating glowing animation for Collab logo
-        gsap.to('.collab-img-float', {
-            y: -10,
-            filter: 'drop-shadow(0 0 25px rgba(66, 133, 244, 1)) drop-shadow(0 0 15px rgba(255, 216, 77, 1))',
-            repeat: -1,
-            yoyo: true,
-            duration: 2,
-            ease: "power1.inOut"
-        });
 
         return () => {
             clearInterval(timerId);
@@ -135,58 +127,47 @@ const Hero = () => {
     const formatNum = (num) => String(num).padStart(2, '0');
 
     return (
-        <section ref={heroRef} style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            padding: '2rem',
-            paddingTop: 'clamp(6rem, 15vh, 8rem)' // Dynamic top padding gives more room on mobile
-        }}>
+        <section ref={heroRef} className="hero-section">
 
-            {/* Floating Top Collab Image */}
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                padding: '1rem 0.5rem',
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'nowrap', // Prevent stacking on tiny screens
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: 'clamp(0.5rem, 2vw, 1rem)',
-                zIndex: 10,
-                pointerEvents: 'none'
-            }}>
-                <span style={{
-                    fontFamily: 'Orbitron, sans-serif',
-                    fontSize: 'clamp(0.45rem, 2.2vw, 0.9rem)', // Much smaller bounds for mobile
-                    letterSpacing: 'clamp(1px, 1vw, 2px)',
-                    color: 'var(--text-white)',
-                    textAlign: 'center',
-                    textTransform: 'uppercase',
-                    fontWeight: 900,
-                    textShadow: '0 0 10px rgba(66, 133, 244, 0.8), 0 0 20px rgba(0, 245, 255, 0.5)'
-                }}>
-                    Proudly Conducted In Collaboration With
-                </span>
-                <img
-                    className="collab-img-float"
-                    src={collabBannerImg}
-                    alt="Google Gemini x Electric Intelligenz Collab"
-                    style={{
-                        marginLeft: '-0.8rem', // Pulled left to sit closer to the text
-                        width: '100%',
-                        maxWidth: 'clamp(110px, 20vw, 180px)', // Shrinks dynamically on mobile
-                        height: 'auto',
-                        filter: 'drop-shadow(0 0 15px rgba(66, 133, 244, 1)) drop-shadow(0 0 10px rgba(255, 216, 77, 0.8))'
-                    }}
-                />
-            </div>
+            <style>
+                {`
+                .hero-section {
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center; /* Center horizontally/vertically on desktop */
+                    position: relative;
+                    padding: clamp(1rem, 2vw, 2rem);
+                }
+                @media (max-width: 768px) {
+                    .hero-section {
+                        justify-content: flex-start; /* Push all content to the top on mobile */
+                        padding-top: 1rem; /* Extremely tight padding to start content from the top */
+                    }
+                }
+                .hero-header-flex {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: clamp(0.2rem, 1vw, 2rem);
+                }
+                .hero-left-logo, .hero-right-logo {
+                    flex: 0 0 auto;
+                    display: flex;
+                    align-items: center;
+                }
+                .hero-title-area {
+                    flex: 1 1 auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                }
+            `}
+            </style>
 
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', maxWidth: '400px', maxHeight: '400px', zIndex: -1, opacity: 0.8 }}>
                 <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1]}>
@@ -194,42 +175,90 @@ const Hero = () => {
                 </Canvas>
             </div>
 
-            <h3 className="mono" style={{
-                color: 'var(--text-white)',
-                letterSpacing: '5px',
-                fontSize: 'clamp(1rem, 3vw, 1.8rem)',
-                marginBottom: '1rem',
-                textTransform: 'uppercase',
-                textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
-                position: 'relative',
+            {/* Container for the Logos and College Name */}
+            <div style={{
+                width: '100%',
+                maxWidth: '1400px', // Improved box width constraint for desktop
                 zIndex: 2,
-                background: 'rgba(11, 15, 43, 0.5)',
-                padding: '0.5rem 1rem',
-                border: '1px solid rgba(0, 245, 255, 0.3)',
-                borderRadius: '8px',
-                backdropFilter: 'blur(5px)',
-                textAlign: 'center'
-            }}>
-                Mahendra Engineering College
-            </h3>
-
-            <h2 className="tagline text-yellow" style={{
-                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
                 marginBottom: '1rem',
-                textTransform: 'uppercase',
-                letterSpacing: '3px',
-                fontWeight: 800,
-                textShadow: '0 0 20px rgba(255, 216, 77, 0.8), 0 0 40px rgba(0, 245, 255, 0.4)',
-                position: 'relative',
-                zIndex: 2,
-                textAlign: 'center',
-                padding: '0 1rem'
+                display: 'flex',
+                justifyContent: 'center'
             }}>
-                Electrical & Electronics Engineering
-            </h2>
+                <div className="hero-header-flex">
 
-            <p style={{ color: 'var(--glow-cyan)', letterSpacing: '2px', fontSize: '1.2rem', marginBottom: '2rem', textTransform: 'uppercase', zIndex: 2 }}>
-                National Level Tech Fest
+                    {/* Left Logo Container - Static Always Left */}
+                    <div className="hero-left-logo" style={{ justifyContent: 'flex-start' }}>
+                        <img src={collegeLogoImg} alt="College Logo" style={{
+                            width: 'clamp(40px, 12vw, 150px)',
+                            filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))'
+                        }} />
+                    </div>
+
+                    {/* Center Text Container - Static Always Middle */}
+                    <div className="hero-title-area mono" style={{
+                        gap: 'clamp(0.1rem, 0.5vw, 0.2rem)',
+                        color: 'var(--text-white)',
+                        background: 'rgba(11, 15, 43, 0.5)',
+                        padding: 'clamp(0.2rem, 1.5vw, 2rem) clamp(0.2rem, 2vw, 2rem)',
+                        border: '1px solid rgba(0, 245, 255, 0.3)',
+                        borderRadius: '8px',
+                        backdropFilter: 'blur(5px)'
+                    }}>
+                        <h3 style={{
+                            letterSpacing: 'clamp(0.5px, 0.5vw, 5px)',
+                            fontSize: 'clamp(0.6rem, 2.5vw, 2.2rem)',
+                            textTransform: 'uppercase',
+                            textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
+                            margin: 0,
+                            whiteSpace: 'nowrap' // Trying to hold single line as long as possible
+                        }}>
+                            Mahendra Engineering College
+                        </h3>
+
+                        <div style={{
+                            fontSize: 'clamp(0.25rem, 1vw, 0.85rem)', // Extremely aggressive clamp down for tiny displays
+                            letterSpacing: '0.2px',
+                            color: 'var(--text-white)',
+                            opacity: 0.9,
+                            marginTop: 'clamp(0.2rem, 1vw, 0.5rem)',
+                            lineHeight: 1.3,
+                            fontWeight: 300
+                        }}>
+                            AUTONOMOUS ACCREDITED BY NAAC WITH "A++ GRADE (CYCLE-2)"<br />
+                            ACCREDITED BY NBA TIER-1 UG: CSE, ECE ,EEE<br />
+                            MALLASAMUDRAM (W), NAMAKKAL (DT)-637503, TAMIL NADU
+                        </div>
+                    </div>
+
+                    {/* Right Logo Container - Static Always Right */}
+                    <div className="hero-right-logo" style={{ justifyContent: 'flex-end' }}>
+                        <img src={deptLogoImg} alt="ELXA Logo" style={{
+                            width: 'clamp(40px, 12vw, 150px)', // Match college logo size
+                            filter: 'drop-shadow(0 0 15px rgba(0, 245, 255, 0.4))'
+                        }} />
+                    </div>
+
+                </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2, marginBottom: '0.5rem' }}>
+                <h2 className="tagline text-yellow" style={{
+                    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    marginBottom: '0.5rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '3px',
+                    fontWeight: 800,
+                    textShadow: '0 0 20px rgba(255, 216, 77, 0.8), 0 0 40px rgba(0, 245, 255, 0.4)',
+                    position: 'relative',
+                    textAlign: 'center',
+                    padding: '0 1rem'
+                }}>
+                    Electrical & Electronics Engineering
+                </h2>
+            </div>
+
+            <p style={{ color: 'var(--text-white)', fontSize: 'clamp(1rem, 2vw, 1.2rem)', marginBottom: '2rem', textAlign: 'center', zIndex: 2, letterSpacing: '2px', textTransform: 'uppercase', position: 'relative' }}>
+                in association with <strong style={{ fontWeight: 900, color: 'var(--glow-cyan)', textShadow: '0 0 10px rgba(0, 245, 255, 0.5)' }}>ELEXA</strong> organizes the <strong style={{ fontWeight: 900, color: 'var(--glow-cyan)', textShadow: '0 0 10px rgba(0, 245, 255, 0.5)' }}>TECH FEST</strong>
             </p>
 
             <h1 className="main-title gradient-text" style={{

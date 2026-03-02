@@ -41,12 +41,26 @@ const Pricing = () => {
                         borderRadius: '16px',
                         textAlign: 'center',
                         boxShadow: '0 0 20px rgba(0, 245, 255, 0.2)',
+                        position: 'relative',
+                        zIndex: 2,
                         transition: 'transform 0.3s',
                         cursor: 'default',
                         flex: '1 1 min-content'
                     }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05) translateY(-10px)'}
                         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) translateY(0)'}
                     >
+                        <div style={{
+                            position: 'absolute',
+                            top: '-15px',
+                            right: '-15px',
+                            background: 'var(--cta-red)',
+                            color: 'white',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '20px',
+                            fontSize: '0.8rem',
+                            fontWeight: 'bold',
+                            boxShadow: '0 0 10px var(--cta-red)'
+                        }}>POPULAR</div>
                         <h4 style={{ color: 'var(--glow-cyan)', marginBottom: '1rem', letterSpacing: '2px', fontSize: 'clamp(1rem, 3vw, 1.2rem)' }}>EARLY REGISTRATION</h4>
                         <strong style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'block' }}>₹250</strong>
                         <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Valid till 23 Mar 2026</span>
@@ -68,18 +82,6 @@ const Pricing = () => {
                     }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05) translateY(-10px)'}
                         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) translateY(0)'}
                     >
-                        <div style={{
-                            position: 'absolute',
-                            top: '-15px',
-                            right: '-15px',
-                            background: 'var(--cta-red)',
-                            color: 'white',
-                            padding: '0.5rem 1rem',
-                            borderRadius: '20px',
-                            fontSize: '0.8rem',
-                            fontWeight: 'bold',
-                            boxShadow: '0 0 10px var(--cta-red)'
-                        }}>POPULAR</div>
                         <h4 style={{ color: 'var(--heading-yellow)', marginBottom: '1rem', letterSpacing: '2px', fontSize: 'clamp(1rem, 3vw, 1.2rem)' }}>SPOT REGISTRATION</h4>
                         <strong style={{ fontSize: 'clamp(3rem, 7vw, 4rem)', display: 'block', color: 'var(--heading-yellow)' }}>₹300</strong>
                         <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>On 26 Mar 2026</span>

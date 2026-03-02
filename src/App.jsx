@@ -73,6 +73,39 @@ function App() {
                     <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', color: 'var(--glow-cyan)' }}>
                         Electrical and Electronics Engineering
                     </p>
+                    <div style={{ marginTop: '2rem' }}>
+                        <a
+                            href="https://www.linkedin.com/in/mahendra-engineering-college-eee-05928b392?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                color: 'var(--text-white)',
+                                textDecoration: 'none',
+                                fontSize: '0.9rem',
+                                border: '1px solid rgba(0, 245, 255, 0.4)',
+                                padding: '0.5rem 1rem',
+                                borderRadius: '4px',
+                                background: 'rgba(0, 245, 255, 0.1)',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 245, 255, 0.2)';
+                                e.currentTarget.style.boxShadow = '0 0 10px rgba(0, 245, 255, 0.5)';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 245, 255, 0.1)';
+                                e.currentTarget.style.boxShadow = 'none';
+                            }}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
                 </footer>
             </main>
         </>

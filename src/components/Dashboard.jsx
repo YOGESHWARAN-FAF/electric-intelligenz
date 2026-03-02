@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(200px, 100%, 280px), 1fr))', gap: 'clamp(1rem, 3vw, 2rem)', marginBottom: 'clamp(1.5rem, 3vw, 2rem)' }}>
                     <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2.5', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', wordBreak: 'break-word' }}>
                         <li><strong className="text-cyan">Event Name:</strong> Electric Intelligenz 2K26</li>
-                        <li><strong className="text-cyan">Department:</strong> Electrical and Electronics Eng.</li>
+                        <li><strong className="text-cyan">Department:</strong> Electrical and Electronics Engineering.</li>
                         <li><strong className="text-cyan">Institution:</strong> Mahendra Engineering College</li>
                     </ul>
                     <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2.5', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', wordBreak: 'break-word' }}>

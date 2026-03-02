@@ -99,7 +99,7 @@ const PrizePool = () => {
                             boxShadow: '0 0 20px rgba(225, 6, 0, 0.5)',
                             textTransform: 'uppercase'
                         }}>
-                            CLAIM YOUR PRIZE
+                            ALL THE BEST
                         </div>
                     </div>
                 </div>
