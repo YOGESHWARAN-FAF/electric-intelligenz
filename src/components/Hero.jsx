@@ -227,10 +227,10 @@ const Hero = () => {
                     .mobile-no-backdrop {
                         backdrop-filter: none !important;
                         -webkit-backdrop-filter: none !important;
-                        background: #05070a !important; /* Professional Ultra Dark */
+                        background: transparent !important; 
                     }
                     .time-box {
-                        background: rgba(11, 15, 43, 0.95) !important;
+                        background: transparent !important;
                         border: 1px solid rgba(255, 216, 77, 0.4) !important;
                         padding: 1.2rem 0.5rem !important;
                         border-radius: 4px;
@@ -240,7 +240,7 @@ const Hero = () => {
                         flex-direction: column;
                         align-items: center;
                         position: relative;
-                        box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+                        box-shadow: none !important;
                     }
                     .time-box::before {
                         content: '';
@@ -375,7 +375,7 @@ const Hero = () => {
                     { label: 'SECS', value: timeLeft.secs }
                 ].map((item, i) => (
                     <div key={i} className="time-box" style={{ 
-                        background: 'rgba(11, 15, 43, 0.6)', 
+                        background: 'transparent', 
                         border: '1px solid rgba(0, 245, 255, 0.4)', 
                         borderRadius: '4px',
                         padding: 'clamp(1rem, 2vw, 2.5rem)',
