@@ -227,20 +227,20 @@ const Hero = () => {
                     .mobile-no-backdrop {
                         backdrop-filter: none !important;
                         -webkit-backdrop-filter: none !important;
-                        background: rgba(11, 15, 43, 0.98) !important;
+                        background: #05070a !important; /* Professional Ultra Dark */
                     }
                     .time-box {
-                        background: rgba(11, 15, 43, 0.8) !important;
-                        border: 2px solid rgba(255, 216, 77, 0.6);
-                        box-shadow: 0 0 20px rgba(255, 216, 77, 0.2);
-                        padding: 1rem;
-                        border-radius: 4px; /* Square boxes */
-                        min-width: 120px;
+                        background: rgba(11, 15, 43, 0.95) !important;
+                        border: 1px solid rgba(255, 216, 77, 0.4) !important;
+                        padding: 1.2rem 0.5rem !important;
+                        border-radius: 4px;
+                        min-width: calc(50% - 0.5rem) !important; /* Perfect 2x2 grid alignment */
+                        flex: 1 1 calc(50% - 0.5rem) !important;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         position: relative;
-                        overflow: hidden;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
                     }
                     .time-box::before {
                         content: '';
@@ -359,13 +359,13 @@ const Hero = () => {
             {/* Redesigned High-Tier Timer UI */}
             <div className="countdown mobile-no-backdrop" style={{
                 display: 'flex',
-                gap: 'clamp(0.5rem, 2vw, 1.5rem)',
+                gap: '1rem',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
                 margin: '2rem auto 4rem auto',
                 zIndex: 2,
                 width: '100%',
-                maxWidth: '1000px',
+                maxWidth: '900px',
                 padding: '0 1rem'
             }}>
                 {[
