@@ -234,17 +234,32 @@ const Dashboard = () => {
                     30% { transform: translateX(300%) skewX(-25deg); }
                     100% { transform: translateX(300%) skewX(-25deg); }
                 }
+                .dog-glow-wrap {
+                    position: relative;
+                    width: fit-content;
+                    margin: 2rem auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .dog-glow-wrap::before {
+                    content: '';
+                    position: absolute;
+                    width: 70%;
+                    height: 70%;
+                    background: radial-gradient(circle, rgba(0, 245, 255, 0.4) 0%, rgba(0, 245, 255, 0) 70%);
+                    z-index: -1;
+                    border-radius: 50%;
+                }
                 .dancing-dog-img {
                     width: 100%;
                     max-width: 350px;
                     background: transparent;
-                    /* GPU optimized shadow */
-                    box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
-                    border-radius: 50%;
                     object-fit: contain;
                     display: block;
-                    margin: 2rem auto;
                     will-change: transform;
+                    /* Clean, clear drop shadow that respects transparency */
+                    filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
                 }
 
                 /* Mobile Zig Zag Flow Map */
@@ -345,7 +360,9 @@ const Dashboard = () => {
                             transition: 'max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.3s',
                             marginTop: expandedEvent === 3 ? '1.5rem' : '0'
                         }}>
-                            <img src={dogImg} alt="Robo Dog" className="dancing-dog-img" />
+                            <div className="dog-glow-wrap">
+                                <img src={dogImg} alt="Robo Dog" className="dancing-dog-img" />
+                            </div>
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginTop: '1.5rem', textAlign: 'left' }}>
                                 <div style={{ background: 'rgba(0,245,255,0.05)', padding: '1rem', borderRadius: '8px', borderLeft: '2px solid #00F5FF' }}>
