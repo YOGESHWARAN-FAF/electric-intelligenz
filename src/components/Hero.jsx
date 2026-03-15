@@ -227,7 +227,29 @@ const Hero = () => {
                     .mobile-no-backdrop {
                         backdrop-filter: none !important;
                         -webkit-backdrop-filter: none !important;
-                        background: rgba(11, 15, 43, 0.95) !important;
+                        background: rgba(11, 15, 43, 0.98) !important;
+                    }
+                    .time-box {
+                        background: rgba(11, 15, 43, 0.8) !important;
+                        border: 2px solid rgba(255, 216, 77, 0.6);
+                        box-shadow: 0 0 20px rgba(255, 216, 77, 0.2);
+                        padding: 1rem;
+                        border-radius: 4px; /* Square boxes */
+                        min-width: 120px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    .time-box::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(90deg, transparent, #FFD84D, transparent);
                     }
                 }
             `}
@@ -334,21 +356,17 @@ const Hero = () => {
                 </div>
             </h1>
 
-            {/* Enlarged Timer Moved Under Title */}
-            <div className="countdown glass-panel mono mobile-no-backdrop" style={{
+            {/* Redesigned High-Tier Timer UI */}
+            <div className="countdown mobile-no-backdrop" style={{
                 display: 'flex',
-                gap: 'clamp(1rem, 4vw, 3rem)',
+                gap: 'clamp(0.5rem, 2vw, 1.5rem)',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
-                padding: '1.5rem 3rem',
-                margin: '1rem auto 4rem auto',
-                border: '2px solid var(--glow-cyan)',
-                boxShadow: '0 0 30px rgba(0, 245, 255, 0.3) inset, 0 10px 40px rgba(0,0,0,0.5)',
+                margin: '2rem auto 4rem auto',
                 zIndex: 2,
-                width: 'auto',
-                maxWidth: '900px',
-                borderRadius: '20px',
-                backdropFilter: 'blur(10px)'
+                width: '100%',
+                maxWidth: '1000px',
+                padding: '0 1rem'
             }}>
                 {[
                     { label: 'DAYS', value: timeLeft.days },
@@ -356,13 +374,48 @@ const Hero = () => {
                     { label: 'MINS', value: timeLeft.mins },
                     { label: 'SECS', value: timeLeft.secs }
                 ].map((item, i) => (
-                    <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '80px' }}>
-                        <span style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 'bold', color: 'var(--glow-cyan)', textShadow: '0 0 25px rgba(0, 245, 255, 0.8), 0 0 10px rgba(255,255,255,0.5)', lineHeight: 1 }}>
+                    <div key={i} className="time-box" style={{ 
+                        background: 'rgba(11, 15, 43, 0.6)', 
+                        border: '1px solid rgba(0, 245, 255, 0.4)', 
+                        borderRadius: '4px',
+                        padding: 'clamp(1rem, 2vw, 2.5rem)',
+                        minWidth: 'clamp(80px, 20vw, 160px)',
+                        boxShadow: '0 0 30px rgba(0, 245, 255, 0.1)',
+                        position: 'relative'
+                    }}>
+                        {/* Unit Number */}
+                        <span style={{ 
+                            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', 
+                            fontWeight: 900, 
+                            color: '#FFD84D', 
+                            textShadow: '0 0 20px rgba(255, 216, 77, 0.6)', 
+                            lineHeight: 1,
+                            fontFamily: '"Share Tech Mono", monospace'
+                        }}>
                             {formatNum(item.value)}
                         </span>
-                        <span style={{ fontSize: '1.2rem', letterSpacing: '4px', color: 'var(--text-white)', marginTop: '0.5rem', fontWeight: 600 }}>
+                        
+                        {/* Bottom Label Bar */}
+                        <div style={{
+                            width: '100%',
+                            height: '1px',
+                            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                            margin: '0.8rem 0'
+                        }}></div>
+
+                        <span style={{ 
+                            fontSize: 'clamp(0.7rem, 1.5vw, 1rem)', 
+                            letterSpacing: '3px', 
+                            color: 'rgba(255,255,255,0.7)', 
+                            fontWeight: 600,
+                            textTransform: 'uppercase'
+                        }}>
                             {item.label}
                         </span>
+                        
+                        {/* Decorative Corner Bracket */}
+                        <div style={{ position: 'absolute', top: '5px', left: '5px', width: '10px', height: '10px', borderLeft: '2px solid #00F5FF', borderTop: '2px solid #00F5FF' }}></div>
+                        <div style={{ position: 'absolute', bottom: '5px', right: '5px', width: '10px', height: '10px', borderRight: '2px solid #FFD84D', borderBottom: '2px solid #FFD84D' }}></div>
                     </div>
                 ))}
             </div>
