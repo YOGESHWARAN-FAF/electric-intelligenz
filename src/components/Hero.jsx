@@ -79,7 +79,15 @@ const CyberCore = () => {
 
 const Hero = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+    const [isMobile, setIsMobile] = useState(false);
     const heroRef = useRef(null);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile, { passive: true });
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         const targetDate = new Date("March 26, 2026 00:00:00").getTime();
@@ -225,11 +233,14 @@ const Hero = () => {
             `}
             </style>
 
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', maxWidth: '400px', maxHeight: '400px', zIndex: -1, opacity: 0.8 }}>
-                <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1]}>
-                    <CyberCore />
-                </Canvas>
-            </div>
+            {/* Render intensive WebGL Canvas only on Desktop devices for 60fps mobile execution target */}
+            {!isMobile && (
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', maxWidth: '400px', maxHeight: '400px', zIndex: -1, opacity: 0.8 }}>
+                    <Canvas camera={{ position: [0, 0, 5] }} dpr={[1, 1]} gl={{ powerPreference: "high-performance" }}>
+                        <CyberCore />
+                    </Canvas>
+                </div>
+            )}
 
             {/* Container for the Logos and College Name */}
             <div style={{
@@ -319,7 +330,7 @@ const Hero = () => {
             }}>
                 <div style={{ animation: 'shineWave 8s infinite linear', background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.7) 50%, transparent 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
                     Electric Intelligenz<br />
-                    <span style={{ fontSize: '1.2em', filter: 'drop-shadow(0 0 5px rgba(255,216,77,0.5))' }}>2K26</span>
+                    <span style={{ fontSize: '1.2em' }}>2K26</span>
                 </div>
             </h1>
 
