@@ -38,7 +38,7 @@ const InstagramFollow = () => {
                     <Instagram size={45} color="white" strokeWidth={2.5} />
                 </div>
 
-                <h3 style={{ margin: 0, fontSize: 'clamp(1.8rem, 5vw, 2.2rem)', fontFamily: 'Orbitron, sans-serif', color: 'var(--text-white)' }}>
+                <h3 style={{ margin: 0, fontSize: 'clamp(1.8rem, 5vw, 2.2rem)', fontFamily: 'Outfit, sans-serif', color: 'var(--text-white)' }}>
                     Follow Us on Instagram
                 </h3>
 

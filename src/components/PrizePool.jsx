@@ -66,41 +66,40 @@ const PrizePool = () => {
                     zIndex: 10
                 }}>
                     <h3 style={{ color: 'var(--glow-cyan)', fontSize: 'clamp(1.5rem, 3vw, 2rem)', letterSpacing: '1px' }}>
-                        Massive Cash Prizes & <br /><span className="text-yellow" style={{ fontSize: '1.2em' }}>Rewards!</span>
+                        🎁 What You Get for the <br /> <span className="text-yellow" style={{ fontSize: '1.2em' }}>Registration Fee</span>
                     </h3>
-                    <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)' }}>
-                        Prepare to grab your share of the massive prize pool. We have exciting cash rewards for event winners, surprise gifts for active participants, alongside exclusive merit shields and certificates!
-                    </p>
-                    <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
-                        <li style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <span style={{ color: 'var(--glow-cyan)', fontSize: '1.8rem' }}>💵</span>
-                            <span><strong className="text-yellow">Winner Rewards:</strong> Exciting cash prizes for top performers</span>
-                        </li>
-                        <li style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <span style={{ color: 'var(--glow-cyan)', fontSize: '1.8rem' }}>🎁</span>
-                            <span><strong className="text-yellow">Surprise Drops:</strong> Hidden gifts throughout the fest</span>
-                        </li>
-                        <li style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                            <span style={{ color: 'var(--glow-cyan)', fontSize: '1.8rem' }}>🛡️</span>
-                            <span><strong className="text-yellow">Shields & Certs:</strong> Official merit certificates and winner shields</span>
-                        </li>
+                    
+                    <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem', padding: 0 }}>
+                        {[
+                            "Welcome Kit",
+                            "2 Refreshments",
+                            "Tasty Lunch",
+                            "Access to 1 Technical Event",
+                            "Free entry to Fun & Special Events",
+                            "Participation Certificate for All",
+                            "Chance to Win Cash Prizes",
+                            "Chance to Win Google Swags & Ambassador Referral"
+                        ].map((item, idx) => (
+                            <li key={idx} style={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                gap: '15px', 
+                                background: 'rgba(0, 245, 255, 0.05)', 
+                                padding: '10px 20px', 
+                                borderRadius: '12px',
+                                border: '1px solid rgba(0, 245, 255, 0.1)',
+                                boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+                            }}>
+                                <span style={{ color: '#0f0', fontSize: '1.5rem', textShadow: '0 0 10px #0f0' }}>✔</span>
+                                <span style={{ color: 'var(--text-white)', fontSize: '1.1rem', fontWeight: 600 }}>{item}</span>
+                            </li>
+                        ))}
                     </ul>
 
-                    <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                        <div className="pulse-button" style={{
-                            display: 'inline-block',
-                            background: 'linear-gradient(90deg, var(--cta-red), #FF8C00)',
-                            padding: '12px 25px',
-                            borderRadius: '30px',
-                            fontWeight: 'bold',
-                            fontFamily: 'Orbitron',
-                            color: 'white',
-                            letterSpacing: '2px',
-                            boxShadow: '0 0 20px rgba(225, 6, 0, 0.5)',
-                            textTransform: 'uppercase'
-                        }}>
-                            ALL THE BEST
-                        </div>
+                    <div style={{ marginTop: '1rem', padding: '1.5rem', background: 'rgba(255, 216, 77, 0.1)', borderLeft: '4px solid #FFD84D', borderRadius: '0 12px 12px 0' }}>
+                        <p style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-white)', fontWeight: 700, lineHeight: 1.6 }}>
+                            ✨ More than anything – <span className="text-yellow">unforgettable memories</span>, zero disappointment, and fun guaranteed!
+                        </p>
                     </div>
                 </div>
 

@@ -4,8 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Hero from './components/Hero';
 import Dashboard from './components/Dashboard';
-import ChiefGuest from './components/ChiefGuest';
-import Events from './components/Events';
+
 import Pricing from './components/Pricing';
 import PrizePool from './components/PrizePool';
 import Background from './components/Background';
@@ -52,9 +51,7 @@ function App() {
 
             <main ref={containerRef} className="app-container">
                 <Hero />
-                <ChiefGuest />
                 <Dashboard />
-                <Events />
                 <PrizePool />
                 <Pricing />
                 <OrganizingCommittee />
@@ -63,7 +60,7 @@ function App() {
                 <footer style={{
                     textAlign: 'center',
                     padding: '3rem',
-                    fontFamily: 'Orbitron, sans-serif',
+                    fontFamily: 'Outfit, sans-serif',
                     color: 'rgba(255, 255, 255, 0.5)',
                     borderTop: '1px solid rgba(0, 245, 255, 0.1)',
                     marginTop: '5rem',

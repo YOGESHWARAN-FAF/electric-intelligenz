@@ -106,7 +106,7 @@ const ChiefGuest = () => {
                     <h3 className="suspense-text" style={{
                         color: 'var(--text-white)',
                         fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                        fontFamily: 'Orbitron, sans-serif',
+                        fontFamily: 'Outfit, sans-serif',
                         letterSpacing: '2px',
                         textTransform: 'uppercase',
                         margin: 0
