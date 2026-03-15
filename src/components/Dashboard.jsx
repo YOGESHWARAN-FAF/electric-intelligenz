@@ -66,6 +66,10 @@ const Dashboard = () => {
 
     const toggleExpand = (index) => {
         setExpandedEvent(expandedEvent === index ? null : index);
+        // Refresh GSAP after accordion expansion animation ends
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 550);
     };
 
     useEffect(() => {
@@ -73,30 +77,30 @@ const Dashboard = () => {
         
         nodes.forEach((node) => {
             gsap.fromTo(node, 
-                { opacity: 0, y: 50, scale: 0.95 },
+                { opacity: 0, y: 20 },
                 { 
                     opacity: 1, 
                     y: 0, 
-                    scale: 1,
-                    duration: 0.8, 
-                    ease: "power3.out",
+                    duration: 0.6, 
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: node,
                         start: 'top 95%',
-                        toggleActions: 'play none none reverse'
+                        toggleActions: 'play none none none'
                     }
                 }
             );
         });
 
-        // Dog floating animation
+        // Dog floating animation (GPU optimized)
         gsap.to('.dancing-dog-img', {
             y: -15,
-            rotationZ: 2,
+            rotationZ: 1,
             repeat: -1,
             yoyo: true,
-            duration: 2,
-            ease: "power2.inOut"
+            duration: 2.5,
+            ease: "sine.inOut",
+            force3D: true
         });
 
     }, []);
@@ -203,39 +207,44 @@ const Dashboard = () => {
                 .event-card {
                     width: calc(50% - 40px); /* 50% minus half the timeline gap */
                     background: rgba(11, 15, 43, 0.7);
-                    backdrop-filter: blur(10px);
+                    backdrop-filter: blur(8px);
+                    -webkit-backdrop-filter: blur(8px);
                     border-radius: 16px;
                     padding: clamp(1.2rem, 3vw, 2rem);
                     transition: transform 0.3s ease, box-shadow 0.3s ease;
                     position: relative;
                     overflow: hidden;
+                    will-change: transform, opacity;
                 }
                 .event-card::after {
                     content: '';
                     position: absolute;
                     top: 0;
-                    left: -150%;
+                    left: 0;
                     width: 50%;
                     height: 100%;
                     background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-                    transform: skewX(-25deg);
-                    animation: glassyFlash 3.5s infinite linear;
+                    animation: glassyFlash 2.5s infinite linear;
                     pointer-events: none;
                     z-index: 10;
+                    will-change: transform;
                 }
                 @keyframes glassyFlash {
-                    0% { left: -150%; }
-                    30% { left: 200%; }
-                    100% { left: 200%; }
+                    0% { transform: translateX(-300%) skewX(-25deg); }
+                    30% { transform: translateX(300%) skewX(-25deg); }
+                    100% { transform: translateX(300%) skewX(-25deg); }
                 }
                 .dancing-dog-img {
                     width: 100%;
                     max-width: 350px;
                     background: transparent;
-                    filter: drop-shadow(0 0 45px rgba(0, 245, 255, 0.8)) drop-shadow(0 0 15px rgba(0, 245, 255, 0.5));
+                    /* GPU optimized shadow */
+                    box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
+                    border-radius: 50%;
                     object-fit: contain;
                     display: block;
                     margin: 2rem auto;
+                    will-change: transform;
                 }
 
                 /* Mobile Zig Zag Flow Map */
@@ -268,6 +277,9 @@ const Dashboard = () => {
                         text-align: left !important;
                         padding: 1.2rem;
                         border-radius: 12px;
+                        backdrop-filter: none;
+                        -webkit-backdrop-filter: none;
+                        background: rgba(11, 15, 43, 0.95);
                     }
                     
                     /* Create a sub-zig-zag effect on cards themselves for mobile */

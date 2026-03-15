@@ -212,6 +212,15 @@ const Hero = () => {
                         margin: 0 auto;
                         flex: 1 1 100% !important;
                     }
+                    /* Performance optimizations for mobile */
+                    .floating-img {
+                        filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5)) !important;
+                    }
+                    .mobile-no-backdrop {
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
+                        background: rgba(11, 15, 43, 0.95) !important;
+                    }
                 }
             `}
             </style>
@@ -315,7 +324,7 @@ const Hero = () => {
             </h1>
 
             {/* Enlarged Timer Moved Under Title */}
-            <div className="countdown glass-panel mono" style={{
+            <div className="countdown glass-panel mono mobile-no-backdrop" style={{
                 display: 'flex',
                 gap: 'clamp(1rem, 4vw, 3rem)',
                 flexWrap: 'wrap',
@@ -435,7 +444,7 @@ const Hero = () => {
                 {/* New Section Design Outside the Box */}
                 
                 {/* Container Box for Awards & Ambassadorship */}
-                <div style={{
+                <div className="mobile-no-backdrop" style={{
                     background: 'rgba(11, 15, 43, 0.65)',
                     borderTop: '2px solid rgba(0, 245, 255, 0.5)',
                     borderBottom: '2px solid rgba(255, 216, 77, 0.5)',
@@ -447,6 +456,7 @@ const Hero = () => {
                     width: '100%',
                     margin: '0 auto',
                     backdropFilter: 'blur(15px)',
+                    WebkitBackdropFilter: 'blur(15px)',
                     boxShadow: '0 0 50px rgba(0, 245, 255, 0.1) inset, 0 20px 40px rgba(0,0,0,0.5)',
                     position: 'relative',
                     overflow: 'hidden'
