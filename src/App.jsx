@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Analytics } from '@vercel/analytics/react';
 
 import Hero from './components/Hero';
 import Dashboard from './components/Dashboard';
@@ -48,6 +49,9 @@ function App() {
 
             {/* Interactive Cursor Trail */}
             <CursorTrail />
+
+            {/* Vercel Analytics */}
+            <Analytics />
 
             <main ref={containerRef} className="app-container">
                 <Hero />
