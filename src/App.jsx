@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Analytics } from '@vercel/analytics/react';
@@ -17,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
     const containerRef = useRef(null);
+    const [showPopup, setShowPopup] = useState(true);
 
     useEffect(() => {
         // Parallax depth layers and smooth transitions
@@ -52,6 +53,78 @@ function App() {
 
             {/* Vercel Analytics */}
             <Analytics />
+
+            {/* Registration Notification Popup */}
+            {showPopup && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    background: 'rgba(0, 0, 0, 0.8)',
+                    backdropFilter: 'blur(5px)',
+                    zIndex: 10000,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '20px'
+                }}>
+                    <div style={{
+                        background: 'linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(10, 10, 20, 0.98))',
+                        border: '2px solid var(--cta-red, #ff4c4c)',
+                        borderRadius: '20px',
+                        padding: '40px 30px',
+                        maxWidth: '500px',
+                        width: '100%',
+                        position: 'relative',
+                        boxShadow: '0 0 40px rgba(255, 76, 76, 0.4), inset 0 0 20px rgba(255, 76, 76, 0.1)',
+                        textAlign: 'center',
+                        color: 'white',
+                        fontFamily: 'Outfit, sans-serif'
+                    }}>
+                        <button
+                            onClick={() => setShowPopup(false)}
+                            style={{
+                                position: 'absolute',
+                                top: '15px',
+                                right: '20px',
+                                background: 'transparent',
+                                border: 'none',
+                                color: 'rgba(255, 255, 255, 0.6)',
+                                fontSize: '1.5rem',
+                                cursor: 'pointer',
+                                transition: 'color 0.3s'
+                            }}
+                            onMouseOver={(e) => e.target.style.color = '#fff'}
+                            onMouseOut={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.6)'}
+                            aria-label="Close"
+                        >
+                            ✖
+                        </button>
+
+                        <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🚨</div>
+                        <h2 style={{ color: 'var(--cta-red, #ff4c4c)', marginBottom: '15px', letterSpacing: '2px', fontSize: '1.8rem' }}>
+                            ONLINE REGISTRATION IS CLOSED
+                        </h2>
+                        <p style={{ fontSize: '1.1rem', opacity: 0.9, lineHeight: '1.6', marginBottom: '25px' }}>
+                            Our department symposium online registration is now officially closed.
+                        </p>
+                        <div style={{
+                            background: 'rgba(255, 216, 77, 0.1)',
+                            border: '1px solid var(--heading-yellow, #ffd84d)',
+                            padding: '15px',
+                            borderRadius: '12px',
+                            color: 'var(--heading-yellow, #ffd84d)',
+                            fontWeight: 'bold',
+                            fontSize: '1.2rem',
+                            letterSpacing: '1px'
+                        }}>
+                            MEET US ON-SPOT FOR REGISTRATION!
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <main ref={containerRef} className="app-container">
                 <Hero />

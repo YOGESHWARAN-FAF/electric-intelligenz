@@ -88,50 +88,25 @@ const Pricing = () => {
                     </div>
                 </div>
 
-                {/* Glowing QR Code Frame */}
+                {/* Registration Closed Notice */}
                 <div style={{
                     marginTop: '2rem',
-                    padding: '2rem',
-                    border: '2px dashed rgba(255, 255, 255, 0.3)',
+                    padding: 'clamp(1.5rem, 4vw, 3rem)',
+                    border: '2px dashed #ff4c4c',
                     borderRadius: '24px',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '1.5rem',
-                    background: 'rgba(255,255,255,0.02)'
+                    textAlign: 'center',
+                    background: 'rgba(255, 76, 76, 0.05)',
+                    boxShadow: '0 0 20px rgba(255, 0, 0, 0.2)'
                 }}>
-                    <div ref={scannerRef} style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '4px',
-                        background: 'var(--glow-cyan)',
-                        boxShadow: '0 0 15px 5px rgba(0, 245, 255, 0.5)',
-                        zIndex: 5
-                    }}></div>
-
-                    <img
-                        src={qrImage}
-                        alt="Registration QR Code"
-                        style={{
-                            width: 'clamp(120px, 40vw, 180px)',
-                            height: 'auto',
-                            objectFit: 'contain',
-                            filter: 'drop-shadow(0 0 15px rgba(255,255,255,0.4))',
-                            borderRadius: '8px',
-                            background: 'white',
-                            padding: '10px'
-                        }}
-                    />
-                    <p className="mono" style={{ letterSpacing: '2px', opacity: 0.8, textAlign: 'center' }}>SCAN OR CLICK TO REGISTER</p>
+                    <h3 style={{ color: '#ff4c4c', marginBottom: '1rem', letterSpacing: '2px', fontSize: 'clamp(1.2rem, 4vw, 1.8rem)' }}>⚠️ ONLINE REGISTRATION CLOSED</h3>
+                    <p style={{ fontSize: 'clamp(1rem, 3vw, 1.2rem)', opacity: 0.9, lineHeight: '1.6' }}>
+                        The online registration window for Electric Intelligenz 2K26 has officially closed.
+                        <br /><br />
+                        <strong style={{ color: 'var(--heading-yellow)', display: 'block', fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', textShadow: '0 0 10px rgba(255, 216, 77, 0.3)' }}>
+                            Meet us directly at the venue for ON-SPOT Registration!
+                        </strong>
+                    </p>
                 </div>
-
-                <a href="https://forms.gle/Fj3hHDK1RuGb7RW77" target="_blank" rel="noreferrer" className="btn-primary" style={{ marginTop: 'clamp(1rem, 3vw, 2rem)', fontSize: 'clamp(1rem, 3vw, 1.2rem)', padding: 'clamp(0.8rem, 2vw, 1rem) clamp(2rem, 5vw, 4rem)', textAlign: 'center' }}>
-                    REGISTER NOW FAST
-                </a>
             </div>
         </section>
     );
