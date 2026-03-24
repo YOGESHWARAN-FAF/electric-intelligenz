@@ -66,7 +66,7 @@ const PrizePool = () => {
                     zIndex: 10
                 }}>
                     <h3 style={{ color: 'var(--glow-cyan)', fontSize: 'clamp(1.5rem, 3vw, 2rem)', letterSpacing: '1px' }}>
-                        🎁 What You Get for the <br /> <span className="text-yellow" style={{ fontSize: '1.2em' }}>Registration Fee</span>
+                        🎁 What You Get at the <br /> <span className="text-yellow" style={{ fontSize: '1.2em' }}>Symposium</span>
                     </h3>
                     
                     <ul style={{ listStyleType: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem', padding: 0 }}>

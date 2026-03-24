@@ -105,22 +105,22 @@ function App() {
 
                         <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🚨</div>
                         <h2 style={{ color: 'var(--cta-red, #ff4c4c)', marginBottom: '15px', letterSpacing: '2px', fontSize: '1.8rem' }}>
-                            ONLINE REGISTRATION IS CLOSED
+                            REGISTRATION IS CLOSED
                         </h2>
                         <p style={{ fontSize: '1.1rem', opacity: 0.9, lineHeight: '1.6', marginBottom: '25px' }}>
-                            Our department symposium online registration is now officially closed.
+                            All registrations for Electric Intelligenz 2K26, including online and on-spot, are now officially closed.
                         </p>
                         <div style={{
-                            background: 'rgba(255, 216, 77, 0.1)',
-                            border: '1px solid var(--heading-yellow, #ffd84d)',
+                            background: 'rgba(255, 76, 76, 0.1)',
+                            border: '1px solid var(--cta-red, #ff4c4c)',
                             padding: '15px',
                             borderRadius: '12px',
-                            color: 'var(--heading-yellow, #ffd84d)',
+                            color: 'var(--cta-red, #ff4c4c)',
                             fontWeight: 'bold',
                             fontSize: '1.2rem',
                             letterSpacing: '1px'
                         }}>
-                            MEET US ON-SPOT FOR REGISTRATION!
+                            SEE YOU AT THE SYMPOSIUM!
                         </div>
                     </div>
                 </div>
